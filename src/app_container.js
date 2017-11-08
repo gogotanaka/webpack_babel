@@ -8,14 +8,9 @@ export default class AppContainer extends React.Component {
     }
   }
 
-  componentWillMount() {
-    axios.get('https://api.ipify.org?format=json')
-    .then((response) => {
-      this.setState({ ip: response.data.ip })
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+  async componentWillMount() {
+    const response = await axios.get('https://api.ipify.org?format=json')
+    this.setState({ ip: response.data.ip });
   }
 
   render() {
